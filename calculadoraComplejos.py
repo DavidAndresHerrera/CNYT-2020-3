@@ -1,12 +1,12 @@
 import math
 
-a = [(1,2)]
+a = [[(6,3),(3,-4.5)], [(0,0),(4,6)]]
 b = [[(1,1),(2,2),(3,3)],[(1,1),(2,2),(3,3)],[(1,1),(2,2),(3,3)]]
 ans = [0,0]
 matrizTotal = []
 def main():
 
-    mtriz_Transpuesta(b)
+    matriz_Conjugada(a)    
   
 def sumar(a,b):
     
@@ -32,6 +32,7 @@ def multiplicacion(a,b):
                 if j == len(b)-1:
                     resE = resE +  (a[i]*b[j]*-1)
                 else:
+
                     resE = resE + (a[i]*b[j])
             else:
                 resI = resI +(a[i]*b[j])                       
@@ -84,7 +85,7 @@ def cartesiana_a_Polar(a):
     elif (a[1] < 0):
         alpha = 360 - alpha
     elif (a[0] < 0 ):
-        alpha = 180 - alpha
+        almtriz_Transpuestapha = 180 - alpha
 
     ans[0] = r
     ans[1] = alpha
@@ -123,9 +124,10 @@ def inversa_Vectores(a):
 def multiplicacion_Escalar_Vectores(a,b):
     ans2 = []
     for i in range(len(b)):
+        print(b[i])
         ans2.append(multiplicacion(a,b[i]))
     matrizTotal = ans2
-    
+    ##print(ans2)
     return ans2
 
 def adicion_Matrices_Complejos(a,b):
@@ -134,7 +136,7 @@ def adicion_Matrices_Complejos(a,b):
         if(todasIguales(a,b)):
             for i in range(len(a)):
                 ans2.append(adicion_Vectores(a[i],b[i]))
-            matrizTotal = ans2
+            matrizTotal = ans2conjugado
         else:
             print("no se puede")
     else:
@@ -154,19 +156,29 @@ def multiplicacion_Escalar_Matrices(a,b):
         ans2.append(multiplicacion_Escalar_Vectores(a,b[i]))
     matrizTotal = ans2
 
-    print(ans2)
+    
     
     return ans2
 
 def mtriz_Transpuesta(a):
+    matrizT = []
+    for i in range(len(a[0])):
+        temp = []
+        for j in range(len(a)):
+            
+            temp.append(a[j][i])
+        matrizT.append(temp)
+    print(matrizT)
+    
+    return matrizT
 
+def matriz_Conjugada(a):
     for i in range(len(a)):
-        for j in range(len(a[i])):
-            temp = a[j][i]
-            a[i][j] = a[j][i]
-            a[j][i] = temp
+        a[i] = conjugado(a[i])
+
     print(a)
     return a
+    
 
 def todasIguales(a,b):
     for i in range(len(a)):
