@@ -1,12 +1,12 @@
 import math
 
-a = [[(6,3),(3,-4.5)], [(0,0),(4,6)]]
-b = [[(1,1),(2,2),(3,3)],[(1,1),(2,2),(3,3)],[(1,1),(2,2),(3,3)]]
+b = [[(1,0)],[(2,0)],[(3,0)],[(4,0)]]
+a = [[(2,0),(4,0),(6,0)],[(8,0),(9,0),(2,0)],[(2,0),(4,0),(6,0)]]
 ans = [0,0]
 matrizTotal = []
 def main():
 
-    matriz_Conjugada(a)    
+    producto_Tensor_Matrices(a,b)    
   
 def sumar(a,b):
     
@@ -178,7 +178,25 @@ def matriz_Conjugada(a):
 
     print(a)
     return a
-    
+
+def producto_Tensor_Vectores(a,b):
+    temp = []
+    for i in range(len(a)):
+        for j in range(len(b)):
+            temp.append(multiplicacion(a[i],b[j]))
+        
+    ##print(temp)
+
+    return temp
+            
+def producto_Tensor_Matrices(a,b):
+    temp = []
+    for i in range(len(a)):
+        for j in range(len(b)):
+            temp.append(producto_Tensor_Vectores(a[i],b[j]))
+    print(temp)
+
+    return temp
 
 def todasIguales(a,b):
     for i in range(len(a)):
