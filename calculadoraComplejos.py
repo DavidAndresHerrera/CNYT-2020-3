@@ -1,13 +1,23 @@
 import math
 
-b = [[(1,0)],[(2,0)],[(3,0)],[(4,0)]]
-a = [[(2,0),(4,0),(6,0)],[(8,0),(9,0),(2,0)],[(2,0),(4,0),(6,0)]]
+c = [[(1,0),(0,0)],[(0,0),(0,0)]]
+b = [[(0,0),(1,0)],[(1,0),(0,0)]]
+a =  [[(1/(2**0.5),0),(1/(2**0.5),0)],[(1/(2**0.5),0),(-(1/(2**0.5)),0)]]
 ans = [0,0]
 matrizTotal = []
 def main():
 
-    producto_Tensor_Matrices(a,b)    
-  
+
+
+    m1 = producto_Tensor_Matrices(a,a)
+    m2 = producto_Tensor_Matrices(a,b)
+
+    multi1 = multi_matrices(m2,m1)
+
+    multi2 = multi_matrices(multi1,c)
+
+    print(multi2)
+    
 def sumar(a,b):
     
     ans[0] = a[0] + b[0]
@@ -147,7 +157,7 @@ def inversa_Matrices(a):
     for i in range(len(a)):
         ans2.append(inversa_Vectores(a[i]))
     matrizTotal = ans2
-    print(ans2)
+    #print(ans2)
     return ans2
 
 def multiplicacion_Escalar_Matrices(a,b):
@@ -168,7 +178,7 @@ def mtriz_Transpuesta(a):
             
             temp.append(a[j][i])
         matrizT.append(temp)
-    print(matrizT)
+    #print(matrizT)
     
     return matrizT
 
@@ -176,7 +186,7 @@ def matriz_Conjugada(a):
     for i in range(len(a)):
         a[i] = conjugado(a[i])
 
-    print(a)
+    #print(a)
     return a
 
 def producto_Tensor_Vectores(a,b):
@@ -194,7 +204,25 @@ def producto_Tensor_Matrices(a,b):
     for i in range(len(a)):
         for j in range(len(b)):
             temp.append(producto_Tensor_Vectores(a[i],b[j]))
-    print(temp)
+   # print(temp)
+
+    return temp
+
+
+def multi_matrices(a,b):
+    temp = []
+    for i in range(len(a)):
+        temp2 = []
+        for j in range(len(b[0])):
+            cont = (0,0)
+            for k in range(len(b)):
+                oper = multiplicacion(a[i][k],b[k][j])
+                cont = sumar(oper,cont) 
+    
+            temp2.append(cont)
+        temp.append(temp2)
+        
+    
 
     return temp
 
