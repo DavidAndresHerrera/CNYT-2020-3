@@ -22,7 +22,7 @@
 >
 > 2.1 si va a correr las pruebas desde cmd entonces >python -m unittest tests/test_something.py
 >
-> 4. verificar que las pruebas corren correcatamente 
+> 3. verificar que las pruebas corren correcatamente 
 
 > #### como son las pruebas:
 > Cada funcion de la libreria tiene su correspondiente prueba
