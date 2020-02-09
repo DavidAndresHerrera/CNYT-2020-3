@@ -1,19 +1,31 @@
 > # CNYT-2020-3
-> ## David Andres Herrera 
-
 
 > ### Proyecto: 
 > #### Libreria  calculadora de numero complejos
 
 > ### Descripcion:
-> - Esta es una calculadora de numeros complejos y estan las siguientes funciones
-> 	- Sumar dos numeros complejos se les pasan de parametros los dos numeros en forma de lista de dos posiciones cada numero
->	- restar dos numeros complejos se les pasan de parametros los dos numeros en forma de lista de dos posiciones cada numero
->	- Producto de dos numeros complejos se les pasan de parametros los dos numeros en forma de lista de dos posiciones cada numero
->	- División de dos numeros complejos se les pasan de parametros los dos numeros en forma de lista de dos posiciones cada numero
->	- Módulo de un numero complejos se le pasa de parametro el numero complejo en forma de lista de dos posiciones
->	- Conjugado de un numero complejos se le pasa de parametro el numero complejo en forma de lista de dos posiciones
->	- Conversión de polar a cartesiano 
->	- Conversión de cartesiano a polar 
->	- Fase de un número complejo
-> - Se agregan las pruebas de cada funcion de la calculadora
+> Esta es una calculadora de numeros complejos, vectores y matrices con distintas funciones 
+> como sumar,restar, multiplicar, etc.
+
+> ### Prerequisitos
+> Python
+
+> ### Instalacion:
+> 1. Descargar python
+> 2. Agregar la variable de python al path del computador
+> 3. Clonar este repositorio
+
+> ### Corriendo las pruebas:
+> 1. Si va a correr las pruebas desde python abrir el archivo de pruebas 
+> 1.2 Darle F5
+> 2.1 si va a correr las pruebas desde cmd entonces >python -m unittest tests/test_something.py
+> 4. verificar que las pruebas corren correcatamente 
+
+> #### como son las pruebas:
+> Cada funcion de la libreria tiene su correspondiente prueba
+
+> ## Autor:
+> ### David Andres Herrera Moya
+
+> #### Ispiracion:
+> clase de cnyt 2020-1 Escuela Colombiana de Ingenieria Julio Garavito
