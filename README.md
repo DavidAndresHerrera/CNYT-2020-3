@@ -17,8 +17,11 @@
 
 > ### Corriendo las pruebas:
 > 1. Si va a correr las pruebas desde python abrir el archivo de pruebas 
+>
 > 1.2 Darle F5
+>
 > 2.1 si va a correr las pruebas desde cmd entonces >python -m unittest tests/test_something.py
+>
 > 4. verificar que las pruebas corren correcatamente 
 
 > #### como son las pruebas:
