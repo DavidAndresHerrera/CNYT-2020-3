@@ -1,22 +1,14 @@
 import math
 
-c = [[(1,0),(0,0)],[(0,0),(0,0)]]
-b = [[(0,0),(1,0)],[(1,0),(0,0)]]
+c = [[1,0], [-2,0]]
+b = [[3,0], [4,0]]
 a =  [[(1/(2**0.5),0),(1/(2**0.5),0)],[(1/(2**0.5),0),(-(1/(2**0.5)),0)]]
 ans = [0,0]
 matrizTotal = []
 def main():
 
+    cartesiana_a_Polar([1,3**0.5])
 
-
-    m1 = producto_Tensor_Matrices(a,a)
-    m2 = producto_Tensor_Matrices(a,b)
-
-    multi1 = multi_matrices(m2,m1)
-
-    multi2 = multi_matrices(multi1,c)
-
-    print(multi2)
     
 def sumar(a,b):
     
@@ -100,6 +92,8 @@ def cartesiana_a_Polar(a):
     ans[0] = r
     ans[1] = alpha
 
+   
+
     return ans[0], ans[1]
     
 def fase(a):
@@ -146,31 +140,37 @@ def adicion_Matrices_Complejos(a,b):
         if(todasIguales(a,b)):
             for i in range(len(a)):
                 ans2.append(adicion_Vectores(a[i],b[i]))
-            matrizTotal = ans2conjugado
+            matrizTotal = ans2
         else:
             print("no se puede")
     else:
         print("no se puede")
-    
+    return ans2
 def inversa_Matrices(a):
     ans2 =[]
     for i in range(len(a)):
         ans2.append(inversa_Vectores(a[i]))
     matrizTotal = ans2
-    #print(ans2)
     return ans2
 
 def multiplicacion_Escalar_Matrices(a,b):
     ans2 = []
     for i in range(len(b)):
         ans2.append(multiplicacion_Escalar_Vectores(a,b[i]))
-    matrizTotal = ans2
-
-    
-    
+    matrizTotal = a
+    ns2
     return ans2
 
-def mtriz_Transpuesta(a):
+def vector_traspuesto(a):
+    matrizT = []
+    for i in range(len(a)):
+        b = []
+        b.append(a[i])
+        matrizT.append(b)
+    
+    return matrizT
+
+def matriz_Transpuesta(a):
     matrizT = []
     for i in range(len(a[0])):
         temp = []
@@ -178,16 +178,26 @@ def mtriz_Transpuesta(a):
             
             temp.append(a[j][i])
         matrizT.append(temp)
-    #print(matrizT)
     
     return matrizT
 
-def matriz_Conjugada(a):
+def vector_Conjugado(a):
     for i in range(len(a)):
         a[i] = conjugado(a[i])
-
-    #print(a)
     return a
+
+def matriz_Conjugada(a):
+
+    for i in range(len(a)):
+        a[i] = vector_Conjugado(a[i])
+    return a
+
+def adjunta(a):
+
+
+    return "en proceso"
+
+
 
 def producto_Tensor_Vectores(a,b):
     temp = []
@@ -210,27 +220,85 @@ def producto_Tensor_Matrices(a,b):
 
 
 def multi_matrices(a,b):
-    temp = []
-    for i in range(len(a)):
-        temp2 = []
-        for j in range(len(b[0])):
-            cont = (0,0)
-            for k in range(len(b)):
-                oper = multiplicacion(a[i][k],b[k][j])
-                cont = sumar(oper,cont) 
-    
-            temp2.append(cont)
-        temp.append(temp2)
+    if len(a) == len(b[0]):
+        temp = []
+        for i in range(len(a)):
+            temp2 = []
+            for j in range(len(b[0])):
+                cont = (0,0)
+                for k in range(len(b)):
+                    oper = multiplicacion(a[i][k],b[k][j])
+                    cont = sumar(oper,cont) 
         
+                temp2.append(cont)
+            temp.append(temp2)
+            
+        
+
+        return temp
+    return False
+
+
+def trasa(a):
+ 
+    total = (0,0)
+    if (len(a) > len(a[0])):
+        for i in range(len(a[0])):                                
+            total = sumar(total, a[i][i])
+    else:
+        for i in range(len(a)):
+            total = sumar(total, a[i][i])
+            
+    ##print (total)
+
+    return total
+
+
+def producto_interno(a,b):
+    ##print(trasa(multi_matrices(matriz_Transpuesta(a),b)))
+    return trasa(multi_matrices(matriz_Transpuesta(a),b))
+
+def norma_Vector(a):
+    total = 0
+    subtotal = 0
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            subtotal = subtotal + (a[i][j])**2
+    total = subtotal**0.5
+    ##print(total)
     
+    return total
 
-    return temp
+def distancia_Vectores(a,b):
+    if len(a) == len(b):
+        x = []
+        total = 0
+        for i in range(len(a)):
+            x.append(restar(b[i],a[i]))
+        print(x)
+        total = norma_Vector(x)
+        
+        print(total)
+        return total
+        
+def hermitian_Matrix(a):
+    
+    aT = matriz_Conjugada(matriz_Transpuesta(a))
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            if (a[i][j][0] != aT[i][j][0]) or (a[i][j][1] != aT[i][j][1]):
+                return False
 
+    print("Hola, es matriz hermitaña")
+    return True
+        
+            
 def todasIguales(a,b):
     for i in range(len(a)):
             if len(a[i]) != len(b[i]):
                 return False
     return True
+
 def prettyPrinting(ans):
     if (ans[0] == 0 and ans[1] == 1): print("i")
     elif ans[0] == 0 :
