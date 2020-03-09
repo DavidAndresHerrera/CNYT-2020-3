@@ -220,23 +220,22 @@ def producto_Tensor_Matrices(a,b):
 
 
 def multi_matrices(a,b):
-    if len(a) == len(b[0]):
-        temp = []
-        for i in range(len(a)):
-            temp2 = []
-            for j in range(len(b[0])):
-                cont = (0,0)
-                for k in range(len(b)):
-                    oper = multiplicacion(a[i][k],b[k][j])
-                    cont = sumar(oper,cont) 
+    temp = []
+    for i in range(len(a)):
+        temp2 = []
+        for j in range(len(b[0])):
+            cont = (0,0)
+            for k in range(len(b)):
+                oper = multiplicacion(a[i][k],b[k][j])
+                cont = sumar(oper,cont) 
+    
+            temp2.append(cont)
+        temp.append(temp2)
         
-                temp2.append(cont)
-            temp.append(temp2)
-            
-        
+    
 
-        return temp
-    return False
+    return temp
+
 
 
 def trasa(a):
