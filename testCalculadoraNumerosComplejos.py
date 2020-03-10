@@ -1,5 +1,6 @@
 import unittest
 import calculadoraComplejos
+import competencias
 
 class TestStringMethods(unittest.TestCase):
    
@@ -52,8 +53,6 @@ class TestStringMethods(unittest.TestCase):
    def test_inversa_Matrices(david):
       david.assertEqual(calculadoraComplejos.inversa_Matrices([[(-1,-2),(2,-6),(-12,2)],[(0,-12),(3,-7),(67,12)]]),([[[1, 2], [-2, 6], [12, -2]], [[0, 12], [-3, 7], [-67, -12]]]))
 
-   def test_multiplicacion_Escalar_Matrices(david):
-      david.assertEqual(calculadoraComplejos.multiplicacion_Escalar_Matrices([2,1],[[(-1,-2),(2,-6),(-12,2)],[(0,-12),(3,-7),(67,12)]]),([[(0, -5), (10, -10), (-26, -8)], [(12, -24), (13, -11), (122, 91)]]))
 
    def test_vector_traspuesto(david):
       david.assertEqual(calculadoraComplejos.vector_traspuesto([(-1,-2),(2,-6),(-12,2)]),([[(-1,-2)],[(2,-6)],[(-12,2)]]))
@@ -73,9 +72,7 @@ class TestStringMethods(unittest.TestCase):
    def test_producto_Tensor_Matrices(david):
       david.assertEqual(calculadoraComplejos.producto_Tensor_Matrices([[(1,0),(-10,0)],[(-1,0),(2,0)]],[[(0,0)],[(3,-7)]]),([[(0, 0), (0, 0)], [(3, -7), (-30, 70)], [(0, 0), (0, 0)], [(-3, 7), (6, -14)]]))
 
-   def test_multi_matrices(david) :
-      david.assertEqual(calculadoraComplejos.multi_matrices([[(1,1)],[(-3,0)]],[[(3,0),(4,0),(4,6)]]),(False))
-
+   
    def test_trasa(david):
       david.assertEqual(calculadoraComplejos.trasa([[(-1,-2),(2,-6),(-12,2)],[(0,-12),(3,-7),(67,12)]]),(2, -9))
 
@@ -88,6 +85,28 @@ class TestStringMethods(unittest.TestCase):
    def test_hermitian_Matrix(david):
       david.assertEqual(calculadoraComplejos.hermitian_Matrix([[(3,0),(3,1)],[(3,-1),(2,0)]]),(True))
 
+
+   def test_compe_1(david):
+      la = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(1,0),(0,0),(0,0)],
+        [(0,0),(1,0),(0,0),(0,0),(0,0),(1,0)],[(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)],
+        [(0,0),(0,0),(0,0),(0,0),(1,0),(0,0)],[(1,0),(0,0),(0,0),(0,0),(0,0),(0,0)]]
+      v = [[(1,0)],[(0,0)],[(0,0)],[(0,0)],[(0,0)],[(0,0)]]
+      r= 2019
+      david.assertEqual(competencias.canicas(la,v,r),[[(0, 0)], [(0, 0)], [(0, 0)], [(1, 0)], [(0, 0)], [(0, 0)]])
+
+   def test_compe_2(david):
+      l = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],
+     [(1/2,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],
+     [(1/2,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],
+     [(0,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)],
+     [(0,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)],
+     [(0,0),(1/3,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0)],
+     [(0,0),(0,0),(1/3,0),(0,0),(0,0),(0,0),(1,0),(0,0)],
+     [(0,0),(0,0),(1/3,0),(0,0),(0,0),(0,0),(1,0),(0,0)]]
+      v = [[(1,0)],[(0,0)],[(0,0)],[(0,0)],[(0,0)],[(0,0)],[(0,0)],[(0,0)]]
+      r = 2
+      david.assertEqual(competencias.probabilistico_mas_de_dos_rendijas(l,v,r,8),[[(0.0, 0.0)], [(0.0, 0.0)], [(0.0, 0.0)], [(0.16666666666666666, 0.0)], [(0.16666666666666666, 0.0)], [(0.3333333333333333, 0.0)], [(0.16666666666666666, 0.0)], [(0.16666666666666666, 0.0)]])
+      
 if __name__ == '__main__':
    unittest.main()
 
