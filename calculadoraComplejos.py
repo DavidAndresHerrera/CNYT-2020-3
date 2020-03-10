@@ -1,13 +1,13 @@
 import math
-
-c = [[1,0], [-2,0]]
-b = [[3,0], [4,0]]
-a =  [[(1/(2**0.5),0),(1/(2**0.5),0)],[(1/(2**0.5),0),(-(1/(2**0.5)),0)]]
 ans = [0,0]
+c = [[1,0], [-2,0]]
+b = [[((1/2**0.5),0)],[(0,(1/2**0.5))]]
+a =  [[(2,0),(1,1),(0,1)],[(1,-1),(3,0)]]
+
 matrizTotal = []
 def main():
 
-    cartesiana_a_Polar([1,3**0.5])
+    print(amplitud(a,b))
 
     
 def sumar(a,b):
@@ -25,7 +25,7 @@ def restar(a,b):
     return ans[0], ans[1]
 
 def multiplicacion(a,b):
-
+    ans = [0,0]
     resE = 0
     resI = 0
     for i in range(len(a)):
@@ -56,10 +56,10 @@ def division(a,b):
 
 def modulo(a):
     
-    ans[0] = ((a[0]**2)+(a[1]**2))**0.5
-    ans[1] = 0
+    total = ((a[0]**2)+(a[1]**2))**0.5
 
-    return ans[0]
+
+    return total
 
 def conjugado(a):
     
@@ -298,6 +298,19 @@ def todasIguales(a,b):
                 return False
     return True
 
+
+def probabilidad(pos,a):
+    num1 = modulo(a[pos])**2
+    total = 0
+    for i in range(len(a)):
+        total += modulo(a[i])**2
+    return (num1/total)*100
+
+def amplitud(v1,v2):
+    ans = multi_matrices(v1,v2)
+    total = multi_matrices(conjugado(ans),v1)
+    print(total)
+    
 def prettyPrinting(ans):
     if (ans[0] == 0 and ans[1] == 1): print("i")
     elif ans[0] == 0 :
