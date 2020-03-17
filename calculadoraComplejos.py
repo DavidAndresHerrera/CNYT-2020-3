@@ -1,8 +1,8 @@
 import math
 ans = [0,0]
 c = [[1,0], [-2,0]]
-b = [[((1/2**0.5),0)],[(0,(1/2**0.5))]]
-a =  [[(2,0),(1,1),(0,1)],[(1,-1),(3,0)]]
+b = [[(1/2**0.5,0)],[(0,1/2**0.5)]]
+a =  [[(2,0),(1,1)],[(1,-1),(3,0)]]
 
 matrizTotal = []
 def main():
@@ -308,7 +308,9 @@ def probabilidad(pos,a):
 
 def amplitud(v1,v2):
     ans = multi_matrices(v1,v2)
-    total = multi_matrices(conjugado(ans),v1)
+    print(ans)
+    print(matriz_Conjugada(ans))
+    total = multi_matrices(v1,matriz_Conjugada(ans))
     print(total)
     
 def prettyPrinting(ans):
